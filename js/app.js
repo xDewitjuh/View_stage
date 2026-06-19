@@ -5,13 +5,14 @@ async function loadData() {
     zincText = await response.text();
 
     populateSites();
+    updateMonthDisplay();
     updateDashboard();
 }
 
 loadData();
 
 let selectedSite;
-let selectedMonth;
+let selectedMonth = new Date();
 
 const siteSelect = document.getElementById("site-select");
 const currentMonth = document.getElementById("currentMonth");
@@ -20,6 +21,24 @@ const nextMonth = document.getElementById("nextMonth");
 
 siteSelect.addEventListener("change", () => {
     selectedSite = siteSelect.value;
+    updateDashboard();
+});
+
+prevMonth.addEventListener("click", () => {
+    selectedMonth.setMonth(
+        selectedMonth.getMonth() - 1
+    );
+
+    updateMonthDisplay();
+    updateDashboard();
+});
+
+nextMonth.addEventListener("click", () => {
+    selectedMonth.setMonth(
+        selectedMonth.getMonth() + 1
+    );
+
+    updateMonthDisplay();
     updateDashboard();
 });
 
@@ -37,6 +56,14 @@ function populateSites() {
 
         siteSelect.appendChild(option);
     });
+}
+
+function updateMonthDisplay() {
+    currentMonth.textContent =
+        selectedMonth.toLocaleDateString("en-GB", {
+            month: "long",
+            year: "numeric"
+        });
 }
 
 function updateDashboard() {
