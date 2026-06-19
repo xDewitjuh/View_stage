@@ -18,63 +18,97 @@
             </div>
         </nav>
     </header>
+
     <main>
-        <section class="title">
-            <h1>Fantom Factory HQ - Energy Report</h1>
-            <b>01 Mar 2026 - 31 Mar 2026</b>
-            <p>Charlesville Place, Neath, SA11PY</p>
-        </section>
-        <section class="energy-consumption">
-            <h2>Energy Consumption</h2>
-            <p>Our goal is to continually reduce energy usage and improve efficiency.</p>
-            <ul>
-                <li>Total electricity consumption reduced by ... compared to last month</li>
-                <li>Building systems operating within expected consumption targets</li>
-            </ul>
-            <div class="cards">
-                <div class="card"></div>
-                <div class="card"></div>
+        <div class="filters">
+            <div class="select-button">
+                <label for="site-select">Site</label>
+                <select name="site-select" id="site-select">
+                    <option value="" selected disabled hidden>Select</option>
+                    <option value="site1">Site 1</option>
+                    <option value="site2">Site 2</option>
+                    <option value="site3">Site 3</option>
+                </select>
             </div>
-            <div class="chart-container">
-                <canvas id="totalsChart"></canvas>
+
+            <div class="select-button">
+                <label for="date-span">Date Span</label>
+                <div class="date-span">
+                    <button id="prevMonth">&lt;</button>
+                    <span id="currentMonth">March 2026</span>
+                    <button id="nextMonth">&gt;</button>
+                </div>
             </div>
-        </section>
-        <section class="energy-cost">
-            <h2>Energy Cost</h2>
-            <p>Energy costs have continued to trend downward this period.</p>
-            <ul>
-                <li>Total energy cost reduced by ... this month</li>
-                <li>Cost per person remains within target parameters</li>
-            </ul>
-            <div class="cards">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
-            <div class="pie-container">
-                <canvas id="pieChart"></canvas>
-            </div>
-            <div class="chart-container">
-                <canvas id="energycostChart"></canvas>
-            </div>
-        </section>
-        <section class="emissions">
-            <h2>Emissions & Environmental Impact</h2>
-            <p>Monitoring our environmental impact to support sustainability targets.</p>
-            <ul>
-                <li>Carbon emissions decreased by ... tonnes compared to last month</li>
-                <li>Offset equivalent of ... trees planted over the reporting period</li>
-            </ul>
-            <div class="cards">
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
-            <div class="trees-container">
-                <canvas id="offsetChart"></canvas>
-                <div class="treesCard"></div>
-            </div>
-        </section>
+        </div>
+
+        <div class="shadow">
+            <section class="title">
+                <h1>Fantom Factory HQ - Energy Report</h1>
+                <b>01 Mar 2026 - 31 Mar 2026</b>
+                <p>Charlesville Place, Neath, SA11PY</p>
+            </section>
+
+            <section class="energy-consumption">
+                <h2>Energy Consumption</h2>
+                <p>Our goal is to continually reduce energy usage and improve efficiency.</p>
+                <ul>
+                    <li>Total electricity consumption reduced by ... compared to last month</li>
+                    <li>Building systems operating within expected consumption targets</li>
+                </ul>
+                <div class="cards">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="totalsChart"></canvas>
+                </div>
+            </section>
+
+            <section class="energy-cost">
+                <h2>Energy Cost</h2>
+                <p>Energy costs have continued to trend downward this period.</p>
+                <ul>
+                    <li>Total energy cost reduced by ... this month</li>
+                    <li>Cost per person remains within target parameters</li>
+                </ul>
+                <div class="cards">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
+
+                <div class="charts">
+                    <div class="pie-container">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="energycostChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="emissions">
+                <h2>Emissions & Environmental Impact</h2>
+                <p>Monitoring our environmental impact to support sustainability targets.</p>
+                <ul>
+                    <li>Carbon emissions decreased by ... tonnes compared to last month</li>
+                    <li>Offset equivalent of ... trees planted over the reporting period</li>
+                </ul>
+                <div class="cards">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </div>
+                <div class="trees-container">
+                    <div class="setChart">
+                        <canvas id="offsetChart"></canvas>
+                    </div>
+
+                    <div class="treesCard"></div>
+                </div>
+            </section>
+        </div>
     </main>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/app.js"></script>
 </body>
