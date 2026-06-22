@@ -3,6 +3,21 @@ let dashboardData = {};
 let selectedSite = "";
 let selectedMonth = new Date();
 
+let totalsChart = null;
+let pieChart = null;
+let energyCostChart = null;
+let offsetChart = null;
+
+const labels = [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+];
+
 const siteSelect = document.getElementById("site-select");
 const currentMonth = document.getElementById("currentMonth");
 const prevMonth = document.getElementById("prevMonth");
@@ -85,6 +100,9 @@ function updateDashboard() {
     const data = dashboardData[selectedSite]?.[monthKey];
     if (!data) return;
 
+    const costLabels = Object.keys(data.systemCostShare);
+    const costValues = Object.values(data.systemCostShare);
+
     consumptionCard.innerHTML = `
     <h3>Electricity Consumption</h3>
     <p>${data.electricityConsumption.toLocaleString()} kWh</p>`;
@@ -116,6 +134,101 @@ function updateDashboard() {
     treeCard.innerHTML = `
     <h3>Trees Planted</h3>
     <p>${data.treesPlanted}</p>`;
+
+    if (totalsChart) {
+        totalsChart.destroy();
+    }
+
+    const ctx = document
+        .getElementById("totalsChart")
+        .getContext("2d");
+
+    totalsChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Current Period",
+                    data: data.dailyTotals
+                },
+                {
+                    label: "Previous Period",
+                    data: data.previousDailyTotals
+                }
+            ]
+        }
+    });
+
+    if (pieChart) {
+        pieChart.destroy();
+    }
+
+    const pieCtx = document
+        .getElementById("pieChart")
+        .getContext("2d");
+
+    pieChart = new Chart(pieCtx, {
+        type: "pie",
+        data: {
+            labels: costLabels,
+            datasets: [
+                {
+                    data: costValues
+                }
+            ]
+        }
+    });
+
+    if (energyCostChart) {
+        energyCostChart.destroy();
+    }
+
+    const energyCostCtx = document
+        .getElementById("energyCostChart")
+        .getContext("2d");
+
+    energyCostChart = new Chart(energyCostCtx, {
+        type: "line",
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Current period",
+                    data: data.dailyCosts
+                },
+                {
+                    label: "Previous period",
+                    data: data.previousDailyCosts
+                }
+            ]
+        }
+    });
+
+    if (offsetChart) {
+        offsetChart.destroy();
+    }
+
+    const offsetCtx = document
+        .getElementById("offsetChart")
+        .getContext("2d");
+
+    offsetChart = new Chart(offsetCtx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "Current Period",
+                    data: data.offsetBreakdown
+                },
+                {
+                    label: "Previous Period",
+                    data: data.previousOffsetBreakdown
+                }
+            ]
+        }
+    });
 
     console.log(data);
 }
