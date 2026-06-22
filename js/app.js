@@ -1,17 +1,6 @@
-let zincText = "";
+let dashboardData = {};
 
-async function loadData() {
-    const response = await fetch("./data/Dewi-Stage-Data.zinc");
-    zincText = await response.text();
-
-    populateSites();
-    updateMonthDisplay();
-    updateDashboard();
-}
-
-loadData();
-
-let selectedSite;
+let selectedSite = "";
 let selectedMonth = new Date();
 
 const siteSelect = document.getElementById("site-select");
@@ -19,34 +8,19 @@ const currentMonth = document.getElementById("currentMonth");
 const prevMonth = document.getElementById("prevMonth");
 const nextMonth = document.getElementById("nextMonth");
 
-siteSelect.addEventListener("change", () => {
-    selectedSite = siteSelect.value;
-    updateDashboard();
-});
+async function loadData() {
+    const response = await fetch("./data/data.json");
+    dashboardData = await response.json();
 
-prevMonth.addEventListener("click", () => {
-    selectedMonth.setMonth(
-        selectedMonth.getMonth() - 1
-    );
-
+    populateSites();
     updateMonthDisplay();
     updateDashboard();
-});
-
-nextMonth.addEventListener("click", () => {
-    selectedMonth.setMonth(
-        selectedMonth.getMonth() + 1
-    );
-
-    updateMonthDisplay();
-    updateDashboard();
-});
+}
 
 function populateSites() {
-    const sites = [
-        "Infinity HQ",
-        "Fantom Factory HQ"
-    ];
+    const sites = Object.keys(dashboardData);
+
+    siteSelect.innerHTML = "";
 
     sites.forEach(site => {
         const option = document.createElement("option");
@@ -56,6 +30,11 @@ function populateSites() {
 
         siteSelect.appendChild(option);
     });
+
+    if (sites.length > 0) {
+        selectedSite = sites[0];
+        siteSelect.value = selectedSite;
+    }
 }
 
 function updateMonthDisplay() {
@@ -66,9 +45,37 @@ function updateMonthDisplay() {
         });
 }
 
+siteSelect.addEventListener("change", () => {
+    selectedSite = siteSelect.value;
+    updateDashboard();
+});
+
+prevMonth.addEventListener("click", () => {
+    selectedMonth.setMonth(selectedMonth.getMonth() - 1);
+
+    updateMonthDisplay();
+    updateDashboard();
+});
+
+nextMonth.addEventListener("click", () => {
+    selectedMonth.setMonth(selectedMonth.getMonth() + 1);
+
+    updateMonthDisplay();
+    updateDashboard();
+});
+
 function updateDashboard() {
-    if (!zincText) return;
+    if (!Object.keys(dashboardData).length) return;
+
+    const monthKey =
+        `${selectedMonth.getFullYear()}-${String(selectedMonth.getMonth() + 1).padStart(2, "0")}`;
 
     console.log("Selected site:", selectedSite);
+    console.log("Selected month:", monthKey);
 
+    const data = dashboardData[selectedSite]?.[monthKey];
+
+    console.log(data);
 }
+
+loadData();

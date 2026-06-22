@@ -1,0 +1,122 @@
+{
+  "Infinity HQ": {
+    "2026-01": {
+      "electricityConsumption": 285000,
+      "usageIntensity": 72,
+      "totalCost": 1520.35,
+      "dailyRate": 49.04,
+      "costPerPerson": 3.72,
+      "carbonTotal": 3890,
+      "carbonPerPerson": 2.3,
+      "treesPlanted": 490,
+
+      "dailyTotals": [420, 380, 340, 310, 280, 260, 240],
+      "previousDailyTotals": [410, 470, 560, 720, 850, 960, 1100],
+
+      "dailyCosts": [58, 52, 49, 45, 42, 38, 35],
+      "previousDailyCosts": [51, 47, 43, 60, 72, 55, 53],
+
+      "systemCostShare": {
+        "AHUs": 18,
+        "Cooling": 32,
+        "Heating": 28,
+        "Lighting": 12,
+        "PlugLoad": 10
+      },
+
+      "offsetBreakdown": [1100, 950, 1020, 980, 1150, 760, 720],
+      "previousOffsetBreakdown": [450, 420, 410, 390, 470, 320, 280]
+    },
+
+    "2026-02": {
+      "electricityConsumption": 292000,
+      "usageIntensity": 74,
+      "totalCost": 1485.10,
+      "dailyRate": 53.04,
+      "costPerPerson": 3.55,
+      "carbonTotal": 3740,
+      "carbonPerPerson": 2.1,
+      "treesPlanted": 510,
+
+      "dailyTotals": [450, 420, 390, 300, 250, 220, 200],
+      "previousDailyTotals": [480, 530, 610, 790, 910, 980, 1080],
+
+      "dailyCosts": [55, 50, 46, 40, 35, 31, 29],
+      "previousDailyCosts": [48, 45, 42, 58, 69, 53, 51],
+
+      "systemCostShare": {
+        "AHUs": 19,
+        "Cooling": 30,
+        "Heating": 29,
+        "Lighting": 12,
+        "PlugLoad": 10
+      },
+
+      "offsetBreakdown": [1150, 1080, 1010, 1070, 1180, 800, 760],
+      "previousOffsetBreakdown": [470, 450, 430, 410, 490, 340, 300]
+    },
+
+    "2026-03": {
+      "electricityConsumption": 300000,
+      "usageIntensity": 76,
+      "totalCost": 1412.83,
+      "dailyRate": 12.83,
+      "costPerPerson": 3.41,
+      "carbonTotal": 3610,
+      "carbonPerPerson": 2.0,
+      "treesPlanted": 527,
+
+      "dailyTotals": [470, 340, 330, 200, 190, 300, 240],
+      "previousDailyTotals": [450, 520, 580, 780, 920, 1010, 1140],
+
+      "dailyCosts": [350, 310, 280, 300, 120, 80, 70],
+      "previousDailyCosts": [340, 260, 220, 480, 350, 330, 320],
+
+      "systemCostShare": {
+        "AHUs": 20,
+        "Cooling": 31,
+        "Heating": 27,
+        "Lighting": 12,
+        "PlugLoad": 10
+      },
+
+      "offsetBreakdown": [1200, 1050, 980, 1010, 1120, 760, 730],
+      "previousOffsetBreakdown": [500, 430, 410, 390, 460, 310, 290]
+    }
+  },
+
+  "Fantom Factory HQ": {
+    "2026-01": {
+      "electricityConsumption": 270000,
+      "usageIntensity": 68,
+      "totalCost": 1380.25,
+      "dailyRate": 44.52,
+      "costPerPerson": 3.18,
+      "carbonTotal": 3500,
+      "carbonPerPerson": 1.9,
+      "treesPlanted": 470
+    },
+
+    "2026-02": {
+      "electricityConsumption": 281000,
+      "usageIntensity": 71,
+      "totalCost": 1450.90,
+      "dailyRate": 51.81,
+      "costPerPerson": 3.27,
+      "carbonTotal": 3560,
+      "carbonPerPerson": 2.0,
+      "treesPlanted": 495
+    },
+
+    "2026-03": {
+      "electricityConsumption": 295000,
+      "usageIntensity": 75,
+      "totalCost": 1395.50,
+      "dailyRate": 45.01,
+      "costPerPerson": 3.22,
+      "carbonTotal": 3480,
+      "carbonPerPerson": 1.8,
+      "treesPlanted": 540
+    }
+  }
+}
