@@ -88,6 +88,36 @@ nextMonth.addEventListener("click", () => {
     updateDashboard();
 });
 
+function getChangeClass(change) {
+    if (change < 0) {
+        return "negative";
+    }
+
+    if (change < 1) {
+        return "neutral";
+    }
+
+    return "positive";
+}
+
+function updateCard(card, title, value, change) {
+    const changeClass = getChangeClass(change);
+
+    const changeText =
+        change > 0
+            ? `+${change}%`
+            : `${change}%`;
+
+    card.innerHTML = `
+        <h3>${title}</h3>
+        <p>${value}</p>
+        <span class="${changeClass}">
+            ${changeText}
+        </span>
+        <small>vs. last year</small>
+    `;
+}
+
 function updateDashboard() {
     if (!Object.keys(dashboardData).length) return;
 
@@ -103,37 +133,67 @@ function updateDashboard() {
     const costLabels = Object.keys(data.systemCostShare);
     const costValues = Object.values(data.systemCostShare);
 
-    consumptionCard.innerHTML = `
-    <h3>Electricity Consumption</h3>
-    <p>${data.electricityConsumption.toLocaleString()} kWh</p>`;
+    updateCard(
+        consumptionCard,
+        "Electricity Consumption",
+        `${data.electricityConsumption.toLocaleString()} kWh`,
+        data.electricityChange
+    );
 
-    usageCard.innerHTML = `
-    <h3>Usage Intensity</h3>
-    <p>${data.usageIntensity}</p>`;
+    updateCard(
+        usageCard,
+        "Usage Intensity",
+        `${data.usageIntensity} kWh/m²`,
+        data.usageIntensityChange
+    );
 
-    totalCostCard.innerHTML = `
-    <h3>Total Cost</h3>
-    <p>£${data.totalCost}</p>`;
+    updateCard(
+        totalCostCard,
+        "Total Cost",
+        `£${data.totalCost}`,
+        data.totalCostChange
+    );
 
-    rateCard.innerHTML = `
-    <h3>Daily Rate</h3>
-    <p>£${data.dailyRate}</p>`;
+    updateCard(
+        rateCard,
+        "Daily Rate",
+        `£${data.dailyRate}`,
+        data.dailyRateChange
+    );
 
-    costPersonCard.innerHTML = `
-    <h3>Cost Per Person</h3>
-    <p>£${data.costPerPerson}</p>`;
+    updateCard(
+        costPersonCard,
+        "Cost Per Person",
+        `£${data.costPerPerson}`,
+        data.costPerPersonChange
+    );
 
-    totalCarbonCard.innerHTML = `
-    <h3>Carbon Total</h3>
-    <p>${data.carbonTotal}</p>`;
+    updateCard(
+        totalCarbonCard,
+        "Carbon Total",
+        `${data.carbonTotal} kgCO₂e`,
+        data.carbonTotalChange
+    );
 
-    carbonPersonCard.innerHTML = `
-    <h3>Carbon Per Person</h3>
-    <p>${data.carbonPerPerson}</p>`;
+    updateCard(
+        carbonPersonCard,
+        "Carbon Per Person",
+        `${data.carbonPerPerson} kgCO₂e`,
+        data.carbonPerPersonChange
+    );
 
     treeCard.innerHTML = `
-    <h3>Trees Planted</h3>
-    <p>${data.treesPlanted}</p>`;
+    <h3>Offset Equivalent</h3>
+
+    <div class="trees-value">
+        ${data.treesPlanted}
+        <span>trees planted</span>
+    </div>
+
+    <p class="trees-subtitle">
+        Equivalent to ${data.co2Offset} tonnes of CO₂
+    </p>
+`;
 
     if (totalsChart) {
         totalsChart.destroy();
@@ -150,11 +210,18 @@ function updateDashboard() {
             datasets: [
                 {
                     label: "Current Period",
-                    data: data.dailyTotals
+                    data: data.dailyTotals,
+                    borderColor: "#4CAF50",
+                    backgroundColor: "#4CAF50",
+                    tension: 0,
+                    pointRadius: 3
                 },
                 {
                     label: "Previous Period",
-                    data: data.previousDailyTotals
+                    data: data.previousDailyTotals,
+                    borderColor: "#8e73c7",
+                    backgroundColor: "#8e73c7",
+                    borderDash: [5, 5]
                 }
             ]
         }
@@ -174,7 +241,16 @@ function updateDashboard() {
             labels: costLabels,
             datasets: [
                 {
-                    data: costValues
+                    data: costValues,
+                    backgroundColor: [
+                        "#5BC85B", // AHUs 
+                        "#E9C95B", // Cooling 
+                        "#4A9FE3", // Heating 
+                        "#A85AD4", // Lighting 
+                        "#E4A13D", // Plug-Load 
+                    ],
+                    borderColor: "#ffffff",
+                    borderWidth: 2,
                 }
             ]
         }
@@ -195,11 +271,18 @@ function updateDashboard() {
             datasets: [
                 {
                     label: "Current period",
-                    data: data.dailyCosts
+                    data: data.dailyCosts,
+                    borderColor: "#4CAF50",
+                    backgroundColor: "#4CAF50",
+                    tension: 0,
+                    pointRadius: 3
                 },
                 {
                     label: "Previous period",
-                    data: data.previousDailyCosts
+                    data: data.previousDailyCosts,
+                    borderColor: "#8e73c7",
+                    backgroundColor: "#8e73c7",
+                    borderDash: [5, 5]
                 }
             ]
         }
@@ -220,11 +303,13 @@ function updateDashboard() {
             datasets: [
                 {
                     label: "Current Period",
-                    data: data.offsetBreakdown
+                    data: data.offsetBreakdown,
+                    backgroundColor: "#5BC85B"
                 },
                 {
                     label: "Previous Period",
-                    data: data.previousOffsetBreakdown
+                    data: data.previousOffsetBreakdown,
+                    backgroundColor: "#E9C95B"
                 }
             ]
         }

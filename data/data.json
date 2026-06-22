@@ -9,13 +9,43 @@
       "carbonTotal": 3890,
       "carbonPerPerson": 2.3,
       "treesPlanted": 490,
-
-      "dailyTotals": [420, 380, 340, 310, 280, 260, 240],
-      "previousDailyTotals": [410, 470, 560, 720, 850, 960, 1100],
-
-      "dailyCosts": [58, 52, 49, 45, 42, 38, 35],
-      "previousDailyCosts": [51, 47, 43, 60, 72, 55, 53],
-
+      "co2Offset": 4.6,
+      "dailyTotals": [
+        420,
+        380,
+        340,
+        310,
+        280,
+        260,
+        240
+      ],
+      "previousDailyTotals": [
+        410,
+        470,
+        560,
+        720,
+        850,
+        960,
+        1100
+      ],
+      "dailyCosts": [
+        58,
+        52,
+        49,
+        45,
+        42,
+        38,
+        35
+      ],
+      "previousDailyCosts": [
+        51,
+        47,
+        43,
+        60,
+        72,
+        55,
+        53
+      ],
       "systemCostShare": {
         "AHUs": 18,
         "Cooling": 32,
@@ -23,11 +53,32 @@
         "Lighting": 12,
         "PlugLoad": 10
       },
-
-      "offsetBreakdown": [1100, 950, 1020, 980, 1150, 760, 720],
-      "previousOffsetBreakdown": [450, 420, 410, 390, 470, 320, 280]
+      "offsetBreakdown": [
+        1100,
+        950,
+        1020,
+        980,
+        1150,
+        760,
+        720
+      ],
+      "previousOffsetBreakdown": [
+        450,
+        420,
+        410,
+        390,
+        470,
+        320,
+        280
+      ],
+      "electricityChange": -85,
+      "usageIntensityChange": 1.84,
+      "totalCostChange": 47.12,
+      "dailyRateChange": 2.88,
+      "costPerPersonChange": -0.32,
+      "carbonTotalChange": 35,
+      "carbonPerPersonChange": 0.18
     },
-
     "2026-06": {
       "electricityConsumption": 292000,
       "usageIntensity": 74,
@@ -37,13 +88,43 @@
       "carbonTotal": 3740,
       "carbonPerPerson": 2.1,
       "treesPlanted": 510,
-
-      "dailyTotals": [450, 420, 390, 300, 250, 220, 200],
-      "previousDailyTotals": [480, 530, 610, 790, 910, 980, 1080],
-
-      "dailyCosts": [55, 50, 46, 40, 35, 31, 29],
-      "previousDailyCosts": [48, 45, 42, 58, 69, 53, 51],
-
+      "co2Offset": 4.8,
+      "dailyTotals": [
+        450,
+        420,
+        390,
+        300,
+        250,
+        220,
+        200
+      ],
+      "previousDailyTotals": [
+        480,
+        530,
+        610,
+        790,
+        910,
+        980,
+        1080
+      ],
+      "dailyCosts": [
+        55,
+        50,
+        46,
+        40,
+        35,
+        31,
+        29
+      ],
+      "previousDailyCosts": [
+        48,
+        45,
+        42,
+        58,
+        69,
+        53,
+        51
+      ],
       "systemCostShare": {
         "AHUs": 19,
         "Cooling": 30,
@@ -51,11 +132,32 @@
         "Lighting": 12,
         "PlugLoad": 10
       },
-
-      "offsetBreakdown": [1150, 1080, 1010, 1070, 1180, 800, 760],
-      "previousOffsetBreakdown": [470, 450, 430, 410, 490, 340, 300]
+      "offsetBreakdown": [
+        1150,
+        1080,
+        1010,
+        1070,
+        1180,
+        800,
+        760
+      ],
+      "previousOffsetBreakdown": [
+        470,
+        450,
+        430,
+        410,
+        490,
+        340,
+        300
+      ],
+      "electricityChange": -92,
+      "usageIntensityChange": 1.96,
+      "totalCostChange": 49.77,
+      "dailyRateChange": 3.12,
+      "costPerPersonChange": -0.41,
+      "carbonTotalChange": 38,
+      "carbonPerPersonChange": 0.21
     },
-
     "2026-07": {
       "electricityConsumption": 300000,
       "usageIntensity": 76,
@@ -65,13 +167,43 @@
       "carbonTotal": 3610,
       "carbonPerPerson": 2.0,
       "treesPlanted": 527,
-
-      "dailyTotals": [470, 340, 330, 200, 190, 300, 240],
-      "previousDailyTotals": [450, 520, 580, 780, 920, 1010, 1140],
-
-      "dailyCosts": [350, 310, 280, 300, 120, 80, 70],
-      "previousDailyCosts": [340, 260, 220, 480, 350, 330, 320],
-
+      "co2Offset": 5.0,
+      "dailyTotals": [
+        470,
+        340,
+        330,
+        200,
+        190,
+        300,
+        240
+      ],
+      "previousDailyTotals": [
+        450,
+        520,
+        580,
+        780,
+        920,
+        1010,
+        1140
+      ],
+      "dailyCosts": [
+        350,
+        310,
+        280,
+        300,
+        120,
+        80,
+        70
+      ],
+      "previousDailyCosts": [
+        340,
+        260,
+        220,
+        480,
+        350,
+        330,
+        320
+      ],
       "systemCostShare": {
         "AHUs": 20,
         "Cooling": 31,
@@ -79,14 +211,35 @@
         "Lighting": 12,
         "PlugLoad": 10
       },
-
-      "offsetBreakdown": [1200, 1050, 980, 1010, 1120, 760, 730],
-      "previousOffsetBreakdown": [500, 430, 410, 390, 460, 310, 290]
+      "offsetBreakdown": [
+        1200,
+        1050,
+        980,
+        1010,
+        1120,
+        760,
+        730
+      ],
+      "previousOffsetBreakdown": [
+        500,
+        430,
+        410,
+        390,
+        460,
+        310,
+        290
+      ],
+      "electricityChange": -100,
+      "usageIntensityChange": 2.05,
+      "totalCostChange": 51.52,
+      "dailyRateChange": 3.97,
+      "costPerPersonChange": -0.49,
+      "carbonTotalChange": 41,
+      "carbonPerPersonChange": 0.24
     }
   },
-
   "Fantom Factory HQ": {
-    "2026-01": {
+    "2026-05": {
       "electricityConsumption": 270000,
       "usageIntensity": 68,
       "totalCost": 1380.25,
@@ -94,10 +247,78 @@
       "costPerPerson": 3.18,
       "carbonTotal": 3500,
       "carbonPerPerson": 1.9,
-      "treesPlanted": 470
+      "treesPlanted": 470,
+      "electricityChange": -75,
+      "usageIntensityChange": 1.42,
+      "totalCostChange": 42.15,
+      "dailyRateChange": 2.74,
+      "costPerPersonChange": -0.28,
+      "carbonTotalChange": 31,
+      "carbonPerPersonChange": 0.15,
+      "co2Offset": 4.4,
+      "dailyTotals": [
+        390,
+        360,
+        340,
+        310,
+        280,
+        250,
+        220
+      ],
+      "previousDailyTotals": [
+        420,
+        450,
+        520,
+        680,
+        790,
+        880,
+        960
+      ],
+      "dailyCosts": [
+        48,
+        44,
+        41,
+        38,
+        35,
+        32,
+        29
+      ],
+      "previousDailyCosts": [
+        45,
+        42,
+        39,
+        52,
+        61,
+        48,
+        46
+      ],
+      "systemCostShare": {
+        "AHUs": 20,
+        "Cooling": 28,
+        "Heating": 30,
+        "Lighting": 12,
+        "PlugLoad": 10
+      },
+      "offsetBreakdown": [
+        980,
+        910,
+        870,
+        920,
+        990,
+        700,
+        650
+      ],
+      "previousOffsetBreakdown": [
+        410,
+        390,
+        370,
+        350,
+        430,
+        290,
+        260
+      ]
     },
-
-    "2026-02": {
+    "2026-06": {
       "electricityConsumption": 281000,
       "usageIntensity": 71,
       "totalCost": 1450.90,
@@ -105,10 +326,78 @@
       "costPerPerson": 3.27,
       "carbonTotal": 3560,
       "carbonPerPerson": 2.0,
-      "treesPlanted": 495
+      "treesPlanted": 495,
+      "electricityChange": -81,
+      "usageIntensityChange": 1.63,
+      "totalCostChange": 44.38,
+      "dailyRateChange": 2.91,
+      "costPerPersonChange": -0.34,
+      "carbonTotalChange": 34,
+      "carbonPerPersonChange": 0.18,
+      "co2Offset": 4.7,
+      "dailyTotals": [
+        410,
+        390,
+        360,
+        320,
+        290,
+        260,
+        240
+      ],
+      "previousDailyTotals": [
+        430,
+        480,
+        550,
+        710,
+        820,
+        900,
+        990
+      ],
+      "dailyCosts": [
+        51,
+        47,
+        43,
+        40,
+        37,
+        34,
+        31
+      ],
+      "previousDailyCosts": [
+        47,
+        44,
+        41,
+        55,
+        64,
+        50,
+        48
+      ],
+      "systemCostShare": {
+        "AHUs": 19,
+        "Cooling": 29,
+        "Heating": 30,
+        "Lighting": 12,
+        "PlugLoad": 10
+      },
+      "offsetBreakdown": [
+        1030,
+        970,
+        920,
+        960,
+        1040,
+        740,
+        700
+      ],
+      "previousOffsetBreakdown": [
+        430,
+        410,
+        390,
+        370,
+        450,
+        310,
+        280
+      ]
     },
-
-    "2026-03": {
+    "2026-07": {
       "electricityConsumption": 295000,
       "usageIntensity": 75,
       "totalCost": 1395.50,
@@ -116,7 +405,76 @@
       "costPerPerson": 3.22,
       "carbonTotal": 3480,
       "carbonPerPerson": 1.8,
-      "treesPlanted": 540
+      "treesPlanted": 540,
+      "electricityChange": -97,
+      "usageIntensityChange": 2.01,
+      "totalCostChange": 50.24,
+      "dailyRateChange": 3.54,
+      "costPerPersonChange": -0.46,
+      "carbonTotalChange": 39,
+      "carbonPerPersonChange": 0.22,
+      "co2Offset": 5.1,
+      "dailyTotals": [
+        440,
+        400,
+        370,
+        330,
+        300,
+        280,
+        250
+      ],
+      "previousDailyTotals": [
+        460,
+        500,
+        570,
+        740,
+        860,
+        940,
+        1030
+      ],
+      "dailyCosts": [
+        53,
+        49,
+        45,
+        42,
+        39,
+        36,
+        33
+      ],
+      "previousDailyCosts": [
+        49,
+        46,
+        43,
+        58,
+        67,
+        52,
+        50
+      ],
+      "systemCostShare": {
+        "AHUs": 18,
+        "Cooling": 31,
+        "Heating": 29,
+        "Lighting": 12,
+        "PlugLoad": 10
+      },
+      "offsetBreakdown": [
+        1080,
+        1010,
+        960,
+        990,
+        1070,
+        780,
+        740
+      ],
+      "previousOffsetBreakdown": [
+        450,
+        430,
+        410,
+        390,
+        470,
+        330,
+        300
+      ]
     }
   }
 }

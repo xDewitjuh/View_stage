@@ -140,6 +140,32 @@ p {
     padding: 20px;
 }
 
+.card h3 {
+    color: #7a7a7a;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card span {
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.card small {
+    color: #777;
+    font-size: 12px;
+    margin-left: 4px;
+}
+
 .charts {
     display: flex;
     width: auto;
@@ -151,7 +177,26 @@ p {
 .pie-container {
     flex: 1;
     margin-top: 20px;
-    border: 1px solid #ddd;
+}
+
+.pie-container {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    box-sizing: border-box;
+    padding-top: 0px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+canvas#pieChart {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0px auto;
+}
+
+.pie-container h3 {
+    margin-top: 20px;
 }
 
 .trees-container {
@@ -163,6 +208,55 @@ p {
 .setChart,
 .treesCard {
     flex: 1;
-    border: 1px solid #ddd;
-    min-height: 300px;
+}
+
+.treesCard h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.trees-value {
+    font-size: 84px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.trees-value span {
+    font-size: 30px;
+    font-weight: 400;
+    color: #666;
+    margin-left: 8px;
+}
+
+.trees-subtitle {
+    font-size: 14px;
+    color: #777;
+}
+
+.positive {
+    background: #d4edda;
+    color: #155724;
+}
+
+.neutral {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.negative {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.chart-container h3,
+.pie-container h3,
+.setChart h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+    margin: 20px;
 }
