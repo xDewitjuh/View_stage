@@ -1,6 +1,6 @@
 {
   "Infinity HQ": {
-    "2026-01": {
+    "2026-05": {
       "electricityConsumption": 285000,
       "usageIntensity": 72,
       "totalCost": 1520.35,
@@ -28,7 +28,7 @@
       "previousOffsetBreakdown": [450, 420, 410, 390, 470, 320, 280]
     },
 
-    "2026-02": {
+    "2026-06": {
       "electricityConsumption": 292000,
       "usageIntensity": 74,
       "totalCost": 1485.10,
@@ -56,7 +56,7 @@
       "previousOffsetBreakdown": [470, 450, 430, 410, 490, 340, 300]
     },
 
-    "2026-03": {
+    "2026-07": {
       "electricityConsumption": 300000,
       "usageIntensity": 76,
       "totalCost": 1412.83,
