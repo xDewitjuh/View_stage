@@ -179,6 +179,10 @@ p {
     margin-top: 20px;
 }
 
+#totalsChart {
+    max-height: 500px;
+}
+
 .pie-container {
     background-color: rgb(255, 255, 255);
     padding: 20px;

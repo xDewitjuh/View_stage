@@ -128,7 +128,39 @@ function updateDashboard() {
     console.log("Selected month:", monthKey);
 
     const data = dashboardData[selectedSite]?.[monthKey];
-    if (!data) return;
+
+    if (!data) {
+        consumptionCard.innerHTML = "";
+        usageCard.innerHTML = "";
+        totalCostCard.innerHTML = "";
+        rateCard.innerHTML = "";
+        costPersonCard.innerHTML = "";
+        totalCarbonCard.innerHTML = "";
+        carbonPersonCard.innerHTML = "";
+        treeCard.innerHTML = "";
+
+        if (totalsChart) {
+            totalsChart.destroy();
+            totalsChart = null;
+        }
+
+        if (pieChart) {
+            pieChart.destroy();
+            pieChart = null;
+        }
+
+        if (energyCostChart) {
+            energyCostChart.destroy();
+            energyCostChart = null;
+        }
+
+        if (offsetChart) {
+            offsetChart.destroy();
+            offsetChart = null;
+        }
+
+        return;
+    }
 
     const costLabels = Object.keys(data.systemCostShare);
     const costValues = Object.values(data.systemCostShare);
