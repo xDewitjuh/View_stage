@@ -110,7 +110,7 @@ function updateCard(card, title, value, change) {
 
     card.innerHTML = `
         <h3>${title}</h3>
-        <p>${value}</p>
+        <p class="card-value">${value}</p>
         <span class="${changeClass}">
             ${changeText}
         </span>
@@ -138,6 +138,15 @@ function updateDashboard() {
         totalCarbonCard.innerHTML = "";
         carbonPersonCard.innerHTML = "";
         treeCard.innerHTML = "";
+        document.getElementById("consumptionReduction").textContent = "";
+        document.getElementById("consumptionTarget").textContent = "";
+
+        document.getElementById("costReduction").textContent = "";
+        document.getElementById("costTarget").textContent = "";
+        document.getElementById("costSummary").textContent = "";
+
+        document.getElementById("carbonReduction").textContent = "";
+        document.getElementById("offsetEquivalent").textContent = "";
 
         if (totalsChart) {
             totalsChart.destroy();
@@ -251,14 +260,14 @@ function updateDashboard() {
     updateCard(
         consumptionCard,
         "Electricity Consumption",
-        `${data.electricityConsumption.toLocaleString()} kWh`,
+        `${data.electricityConsumption.toLocaleString()} <small>kWh</small>`,
         data.electricityChange
     );
 
     updateCard(
         usageCard,
         "Usage Intensity",
-        `${data.usageIntensity} kWh/m²`,
+        `${data.usageIntensity} <small>kWh/m²</small>`,
         data.usageIntensityChange
     );
 
@@ -286,14 +295,14 @@ function updateDashboard() {
     updateCard(
         totalCarbonCard,
         "Carbon Total",
-        `${data.carbonTotal} kgCO₂e`,
+        `${data.carbonTotal} <small>kgCO₂e</small>`,
         data.carbonTotalChange
     );
 
     updateCard(
         carbonPersonCard,
         "Carbon Per Person",
-        `${data.carbonPerPerson} kgCO₂e`,
+        `${data.carbonPerPerson} <small>kgCO₂e</small>`,
         data.carbonPerPersonChange
     );
 

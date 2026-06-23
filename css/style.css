@@ -93,7 +93,8 @@ header {
 
 .shadow {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex-column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -147,8 +148,6 @@ p {
 }
 
 .card p {
-    font-size: 42px;
-    font-weight: 700;
     margin-bottom: 10px;
 }
 
@@ -268,4 +267,14 @@ canvas#energyCostChart {
     font-weight: 600;
     color: #555;
     margin: 20px;
+}
+
+.card-value {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.card-value small {
+    font-size: 0.6em;
+    font-weight: 400;
 }
