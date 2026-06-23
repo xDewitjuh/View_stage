@@ -49,8 +49,8 @@
                 <h2>Energy Consumption</h2>
                 <p>Our goal is to continually reduce energy usage and improve efficiency.</p>
                 <ul>
-                    <li>Total electricity consumption reduced by ... compared to last month</li>
-                    <li>Building systems operating within expected consumption targets</li>
+                    <li id="consumptionReduction"></li>
+                    <li id="consumptionTarget"></li>
                 </ul>
                 <div class="cards">
                     <div class="card" id="consumptionCard"></div>
@@ -64,10 +64,10 @@
 
             <section class="energy-cost">
                 <h2>Energy Cost</h2>
-                <p>Energy costs have continued to trend downward this period.</p>
+                <p id="costSummary"></p>
                 <ul>
-                    <li>Total energy cost reduced by ... this month</li>
-                    <li>Cost per person remains within target parameters</li>
+                    <li id="costReduction"></li>
+                    <li id="costTarget"></li>
                 </ul>
                 <div class="cards">
                     <div class="card" id="totalCostCard"></div>
@@ -91,16 +91,18 @@
                 <h2>Emissions & Environmental Impact</h2>
                 <p>Monitoring our environmental impact to support sustainability targets.</p>
                 <ul>
-                    <li>Carbon emissions decreased by ... tonnes compared to last month</li>
-                    <li>Offset equivalent of ... trees planted over the reporting period</li>
+                    <li id="carbonReduction"></li>
+                    <li id="offsetEquivalent"></li>
                 </ul>
                 <div class="cards">
                     <div class="card" id="totalCarbonCard"></div>
                     <div class="card" id="carbonPersonCard"></div>
                 </div>
                 <div class="trees-container">
-                    
-                    <div class="treesCard" id="treeCard"><h3>Offset Equivalent</h3></div>
+
+                    <div class="treesCard" id="treeCard">
+                        <h3>Offset Equivalent</h3>
+                    </div>
                     <div class="setChart">
                         <h3>Offset daily breakdown</h3>
                         <canvas id="offsetChart"></canvas>

@@ -162,6 +162,89 @@ function updateDashboard() {
         return;
     }
 
+    const previousMonthDate = new Date(selectedMonth);
+    previousMonthDate.setMonth(previousMonthDate.getMonth() - 1);
+
+    const previousMonthKey =
+        `${previousMonthDate.getFullYear()}-${String(previousMonthDate.getMonth() + 1).padStart(2, "0")}`;
+
+    const previousMonthData =
+        dashboardData[selectedSite]?.[previousMonthKey];
+
+    if (previousMonthData) {
+        const carbonDifference =
+            previousMonthData.carbonTotal -
+            data.carbonTotal;
+
+        const carbonDirection =
+            carbonDifference > 0
+                ? "decreased"
+                : "increased";
+
+        const carbonAmount =
+            (Math.abs(carbonDifference) / 1000).toFixed(2);
+
+        document.getElementById("carbonReduction").textContent =
+            `Carbon emissions ${carbonDirection} by ${carbonAmount} tonnes compared to last month`;
+
+        document.getElementById("offsetEquivalent").textContent =
+            `Offset equivalent of ${data.treesPlanted} trees planted over the reporting period`;
+    }
+
+    if (previousMonthData) {
+        const difference =
+            previousMonthData.electricityConsumption -
+            data.electricityConsumption;
+
+        const direction =
+            difference > 0
+                ? "decreased"
+                : "increased";
+
+        const amount = Math.abs(difference);
+
+        document.getElementById("consumptionReduction").textContent =
+            `Total electricity consumption ${direction} by ${amount.toLocaleString()} kWh compared to last month`;
+    }
+
+    const targetText =
+        data.usageIntensity < 75
+            ? "Building systems operating within expected consumption targets"
+            : "Building systems operating above expected consumption targets";
+
+    document.getElementById("consumptionTarget").textContent = targetText;
+
+    const costDifference =
+        previousMonthData.totalCost -
+        data.totalCost;
+
+    const costDirection =
+        costDifference > 0
+            ? "reduced"
+            : "increased";
+
+    const costAmount =
+        Math.abs(costDifference).toFixed(2);
+
+    document.getElementById("costReduction").textContent =
+        `Total energy cost ${costDirection} by £${costAmount} compared to last month`;
+
+    const costTargetText =
+        data.costPerPerson <= 4
+            ? "Cost per person remains within target parameters"
+            : "Cost per person exceeds target parameters";
+
+    document.getElementById("costTarget").textContent =
+        costTargetText;
+
+    const costSummary =
+        costDifference > 0
+            ? "Energy costs have continued to trend downward this period."
+            : "Energy costs have continued to trend upward this period.";
+
+    document.getElementById("costSummary").textContent =
+        costSummary;
+
     const costLabels = Object.keys(data.systemCostShare);
     const costValues = Object.values(data.systemCostShare);
 

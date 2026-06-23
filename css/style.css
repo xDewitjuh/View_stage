@@ -209,6 +209,11 @@ canvas#pieChart {
     margin-top: 20px;
 }
 
+canvas#energyCostChart {
+    margin-top: 80px;
+}
+
+
 .setChart,
 .treesCard {
     flex: 1;
