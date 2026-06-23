@@ -30,6 +30,9 @@ const costPersonCard = document.getElementById("costPersonCard");
 const totalCarbonCard = document.getElementById("totalCarbonCard");
 const carbonPersonCard = document.getElementById("carbonPersonCard");
 const treeCard = document.getElementById("treeCard");
+const reportTitle = document.getElementById("reportTitle");
+const reportPeriod = document.getElementById("reportPeriod");
+const reportAddress = document.getElementById("reportAddress");
 
 
 async function loadData() {
@@ -170,6 +173,29 @@ function updateDashboard() {
 
         return;
     }
+
+    reportTitle.textContent =
+        `${selectedSite} - Energy Report`;
+
+    reportAddress.textContent =
+        dashboardData[selectedSite].address;
+
+    const firstDay =
+        new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), 1);
+
+    const lastDay =
+        new Date(selectedMonth.getFullYear(), selectedMonth.getMonth() + 1, 0);
+
+    reportPeriod.textContent =
+        `${firstDay.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        })} - ${lastDay.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        })}`;
 
     const previousMonthDate = new Date(selectedMonth);
     previousMonthDate.setMonth(previousMonthDate.getMonth() - 1);

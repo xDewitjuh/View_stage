@@ -1,5 +1,6 @@
 {
   "Infinity HQ": {
+    "address": "Wijkermeerweg 44U, 1948 NW Beverwijk",
     "2026-05": {
       "electricityConsumption": 285000,
       "usageIntensity": 72,
@@ -239,6 +240,7 @@
     }
   },
   "Fantom Factory HQ": {
+    "address": "1 Charlesville place, Neath, SA11 1PY",
     "2026-05": {
       "electricityConsumption": 270000,
       "usageIntensity": 68,
