@@ -44,6 +44,8 @@ async function loadData() {
     datePicker.value =
         new Date().toISOString().split("T")[0];
 
+    periodSelect.value = selectedPeriod;
+
     updateDashboard();
 }
 
@@ -234,6 +236,8 @@ function updateDashboard() {
         totalCarbonCard.innerHTML = "";
         carbonPersonCard.innerHTML = "";
         treeCard.innerHTML = "";
+        reportPeriod.textContent = "";
+
         document.getElementById("consumptionReduction").textContent = "";
         document.getElementById("consumptionTarget").textContent = "";
 
@@ -279,16 +283,55 @@ function updateDashboard() {
     const lastDay =
         new Date(selectedMonth.getFullYear(), selectedMonth.getMonth() + 1, 0);
 
-    reportPeriod.textContent =
-        `${firstDay.toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric"
-        })} - ${lastDay.toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric"
-        })}`;
+    if (selectedPeriod === "month") {
+
+        reportPeriod.textContent =
+            `${firstDay.toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            })} - ${lastDay.toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            })}`;
+
+    } else if (selectedPeriod === "week") {
+
+        const weekStart = new Date(selectedMonth);
+        const day = weekStart.getDay();
+
+        const daysFromMonday =
+            day === 0 ? 6 : day - 1;
+
+        weekStart.setDate(
+            weekStart.getDate() - daysFromMonday
+        );
+
+        const weekEnd = new Date(weekStart);
+        weekEnd.setDate(
+            weekStart.getDate() + 6
+        );
+
+        reportPeriod.textContent =
+            `${weekStart.toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            })} - ${weekEnd.toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            })}`;
+
+    } else if (selectedPeriod === "quarter") {
+
+        const quarter =
+            Math.ceil((selectedMonth.getMonth() + 1) / 3);
+
+        reportPeriod.textContent =
+            `Q${quarter} ${selectedMonth.getFullYear()}`;
+    }
 
     const previousMonthDate = new Date(selectedMonth);
     previousMonthDate.setMonth(previousMonthDate.getMonth() - 1);
