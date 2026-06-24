@@ -2,6 +2,7 @@ let dashboardData = {};
 
 let selectedSite = "";
 let selectedMonth = new Date();
+let selectedPeriod = "month";
 
 let totalsChart = null;
 let pieChart = null;
@@ -19,9 +20,8 @@ const labels = [
 ];
 
 const siteSelect = document.getElementById("site-select");
-const currentMonth = document.getElementById("currentMonth");
-const prevMonth = document.getElementById("prevMonth");
-const nextMonth = document.getElementById("nextMonth");
+const datePicker = document.getElementById("datePicker");
+const periodSelect = document.getElementById("periodSelect");
 const consumptionCard = document.getElementById("consumptionCard");
 const usageCard = document.getElementById("usageCard");
 const totalCostCard = document.getElementById("totalCostCard");
@@ -40,7 +40,10 @@ async function loadData() {
     dashboardData = await response.json();
 
     populateSites();
-    updateMonthDisplay();
+
+    datePicker.value =
+        new Date().toISOString().split("T")[0];
+
     updateDashboard();
 }
 
@@ -64,30 +67,19 @@ function populateSites() {
     }
 }
 
-function updateMonthDisplay() {
-    currentMonth.textContent =
-        selectedMonth.toLocaleDateString("en-GB", {
-            month: "long",
-            year: "numeric"
-        });
-}
-
 siteSelect.addEventListener("change", () => {
     selectedSite = siteSelect.value;
     updateDashboard();
 });
 
-prevMonth.addEventListener("click", () => {
-    selectedMonth.setMonth(selectedMonth.getMonth() - 1);
-
-    updateMonthDisplay();
+datePicker.addEventListener("change", () => {
+    selectedMonth = new Date(datePicker.value);
     updateDashboard();
 });
 
-nextMonth.addEventListener("click", () => {
-    selectedMonth.setMonth(selectedMonth.getMonth() + 1);
+periodSelect.addEventListener("change", () => {
+    selectedPeriod = periodSelect.value;
 
-    updateMonthDisplay();
     updateDashboard();
 });
 
@@ -121,16 +113,117 @@ function updateCard(card, title, value, change) {
     `;
 }
 
+function getWeekData(data) {
+    return {
+        ...data,
+        electricityConsumption:
+            Math.round(data.electricityConsumption / 4),
+
+        totalCost:
+            Number((data.totalCost / 4).toFixed(2)),
+
+        carbonTotal:
+            Math.round(data.carbonTotal / 4),
+
+        treesPlanted:
+            Math.round(data.treesPlanted / 4),
+
+        dailyRate:
+            Number((data.dailyRate / 4).toFixed(2))
+    };
+}
+
+function getQuarterData(site, selectedMonth) {
+
+    const currentMonth = selectedMonth.getMonth() + 1;
+    const year = selectedMonth.getFullYear();
+
+    const quarterMonths = [
+        `${year}-${String(currentMonth - 2).padStart(2, "0")}`,
+        `${year}-${String(currentMonth - 1).padStart(2, "0")}`,
+        `${year}-${String(currentMonth).padStart(2, "0")}`
+    ];
+
+    const quarterData = quarterMonths
+        .map(month => dashboardData[site]?.[month])
+        .filter(Boolean);
+
+    if (!quarterData.length) {
+        return null;
+    }
+
+    return {
+        ...quarterData[quarterData.length - 1],
+
+        electricityConsumption:
+            quarterData.reduce(
+                (sum, month) => sum + month.electricityConsumption,
+                0
+            ),
+
+        totalCost:
+            quarterData.reduce(
+                (sum, month) => sum + month.totalCost,
+                0
+            ),
+
+        carbonTotal:
+            quarterData.reduce(
+                (sum, month) => sum + month.carbonTotal,
+                0
+            ),
+
+        treesPlanted:
+            quarterData.reduce(
+                (sum, month) => sum + month.treesPlanted,
+                0
+            ),
+
+        usageIntensity:
+            quarterData.reduce(
+                (sum, month) => sum + month.usageIntensity,
+                0
+            ) / quarterData.length,
+
+        dailyRate:
+            quarterData.reduce(
+                (sum, month) => sum + month.dailyRate,
+                0
+            ) / quarterData.length,
+
+        costPerPerson:
+            quarterData.reduce(
+                (sum, month) => sum + month.costPerPerson,
+                0
+            ) / quarterData.length,
+
+        carbonPerPerson:
+            quarterData.reduce(
+                (sum, month) => sum + month.carbonPerPerson,
+                0
+            ) / quarterData.length
+    };
+}
+
 function updateDashboard() {
     if (!Object.keys(dashboardData).length) return;
 
     const monthKey =
         `${selectedMonth.getFullYear()}-${String(selectedMonth.getMonth() + 1).padStart(2, "0")}`;
 
-    console.log("Selected site:", selectedSite);
-    console.log("Selected month:", monthKey);
+    let data =
+        dashboardData[selectedSite]?.[monthKey];
 
-    const data = dashboardData[selectedSite]?.[monthKey];
+    if (selectedPeriod === "week" && data) {
+        data = getWeekData(data);
+    }
+
+    if (selectedPeriod === "quarter" && data) {
+        data = getQuarterData(
+            selectedSite,
+            selectedMonth
+        );
+    }
 
     if (!data) {
         consumptionCard.innerHTML = "";
@@ -249,36 +342,39 @@ function updateDashboard() {
 
     document.getElementById("consumptionTarget").textContent = targetText;
 
-    const costDifference =
-        previousMonthData.totalCost -
-        data.totalCost;
+    if (previousMonthData) {
 
-    const costDirection =
-        costDifference > 0
-            ? "reduced"
-            : "increased";
+        const costDifference =
+            previousMonthData.totalCost -
+            data.totalCost;
 
-    const costAmount =
-        Math.abs(costDifference).toFixed(2);
+        const costDirection =
+            costDifference > 0
+                ? "reduced"
+                : "increased";
 
-    document.getElementById("costReduction").textContent =
-        `Total energy cost ${costDirection} by £${costAmount} compared to last month`;
+        const costAmount =
+            Math.abs(costDifference).toFixed(2);
 
-    const costTargetText =
-        data.costPerPerson <= 4
-            ? "Cost per person remains within target parameters"
-            : "Cost per person exceeds target parameters";
+        document.getElementById("costReduction").textContent =
+            `Total energy cost ${costDirection} by £${costAmount} compared to last month`;
 
-    document.getElementById("costTarget").textContent =
-        costTargetText;
+        const costTargetText =
+            data.costPerPerson <= 4
+                ? "Cost per person remains within target parameters"
+                : "Cost per person exceeds target parameters";
 
-    const costSummary =
-        costDifference > 0
-            ? "Energy costs have continued to trend downward this period."
-            : "Energy costs have continued to trend upward this period.";
+        document.getElementById("costTarget").textContent =
+            costTargetText;
 
-    document.getElementById("costSummary").textContent =
-        costSummary;
+        const costSummary =
+            costDifference > 0
+                ? "Energy costs have continued to trend downward this period."
+                : "Energy costs have continued to trend upward this period.";
+
+        document.getElementById("costSummary").textContent =
+            costSummary;
+    }
 
     const costLabels = Object.keys(data.systemCostShare);
     const costValues = Object.values(data.systemCostShare);
@@ -464,8 +560,6 @@ function updateDashboard() {
             ]
         }
     });
-
-    console.log(data);
 }
 
 loadData();

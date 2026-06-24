@@ -57,8 +57,9 @@ header {
     margin-bottom: 5px;
     color: rgb(130, 131, 134)
 }
-
-#site-select {
+#period-select,
+#datePicker,
+#siteSelect {
     border: 1px solid #ccc;
     background-color: #f5f5f5;
     font-size: 14px;

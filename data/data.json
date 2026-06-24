@@ -237,6 +237,85 @@
       "costPerPersonChange": -0.49,
       "carbonTotalChange": 41,
       "carbonPerPersonChange": 0.24
+    },
+    "2026-08": {
+      "electricityConsumption": 315000,
+      "usageIntensity": 78,
+      "totalCost": 1535.45,
+      "dailyRate": 14.92,
+      "costPerPerson": 3.35,
+      "carbonTotal": 3550,
+      "carbonPerPerson": 1.9,
+      "treesPlanted": 550,
+      "co2Offset": 5.3,
+      "dailyTotals": [
+        510,
+        460,
+        420,
+        350,
+        320,
+        380,
+        290
+      ],
+      "previousDailyTotals": [
+        470,
+        540,
+        610,
+        790,
+        930,
+        1020,
+        1150
+      ],
+      "dailyCosts": [
+        65,
+        60,
+        55,
+        50,
+        45,
+        40,
+        38
+      ],
+      "previousDailyCosts": [
+        58,
+        54,
+        50,
+        66,
+        74,
+        60,
+        57
+      ],
+      "systemCostShare": {
+        "AHUs": 21,
+        "Cooling": 32,
+        "Heating": 25,
+        "Lighting": 12,
+        "PlugLoad": 10
+      },
+      "offsetBreakdown": [
+        1250,
+        1100,
+        1030,
+        1060,
+        1180,
+        810,
+        770
+      ],
+      "previousOffsetBreakdown": [
+        520,
+        450,
+        430,
+        400,
+        480,
+        330,
+        310
+      ],
+      "electricityChange": -108,
+      "usageIntensityChange": 2.14,
+      "totalCostChange": 53.18,
+      "dailyRateChange": 4.12,
+      "costPerPersonChange": -0.55,
+      "carbonTotalChange": 43,
+      "carbonPerPersonChange": 0.26
     }
   },
   "Fantom Factory HQ": {
@@ -476,6 +555,85 @@
         470,
         330,
         300
+      ]
+    },
+    "2026-08": {
+      "electricityConsumption": 308000,
+      "usageIntensity": 77,
+      "totalCost": 1488.75,
+      "dailyRate": 48.02,
+      "costPerPerson": 3.18,
+      "carbonTotal": 3400,
+      "carbonPerPerson": 1.7,
+      "treesPlanted": 555,
+      "electricityChange": -104,
+      "usageIntensityChange": 2.15,
+      "totalCostChange": 52.10,
+      "dailyRateChange": 3.78,
+      "costPerPersonChange": -0.52,
+      "carbonTotalChange": 42,
+      "carbonPerPersonChange": 0.25,
+      "co2Offset": 5.4,
+      "dailyTotals": [
+        480,
+        430,
+        400,
+        360,
+        320,
+        300,
+        270
+      ],
+      "previousDailyTotals": [
+        500,
+        550,
+        620,
+        780,
+        900,
+        980,
+        1070
+      ],
+      "dailyCosts": [
+        56,
+        52,
+        48,
+        44,
+        41,
+        38,
+        35
+      ],
+      "previousDailyCosts": [
+        52,
+        48,
+        45,
+        60,
+        70,
+        55,
+        53
+      ],
+      "systemCostShare": {
+        "AHUs": 18,
+        "Cooling": 32,
+        "Heating": 28,
+        "Lighting": 12,
+        "PlugLoad": 10
+      },
+      "offsetBreakdown": [
+        1120,
+        1040,
+        990,
+        1020,
+        1100,
+        800,
+        760
+      ],
+      "previousOffsetBreakdown": [
+        470,
+        450,
+        420,
+        400,
+        480,
+        340,
+        310
       ]
     }
   }

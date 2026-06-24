@@ -29,12 +29,17 @@
             </div>
 
             <div class="select-button">
-                <label for="date-span">Date Span</label>
-                <div class="date-span">
-                    <button id="prevMonth">&lt;</button>
-                    <span id="currentMonth"></span>
-                    <button id="nextMonth">&gt;</button>
-                </div>
+                <label for="datePicker">Date</label>
+                <input type="date" id="datePicker">
+            </div>
+
+            <div class="select-button">
+                <label for="periodSelect">Period</label>
+                <select id="periodSelect">
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                    <option value="quarter">Quarter</option>
+                </select>
             </div>
         </div>
 
