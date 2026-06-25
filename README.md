@@ -24,9 +24,9 @@ An interactive energy reporting dashboard built with HTML, CSS, JavaScript and C
 - JavaScript
 - Chart.js
 
-## Applicatie starten
-- Download of clone de repository.
-- Open de projectmap in Visual Studio Code.
-- Installeer de extensie Live Server (indien nog niet aanwezig).
-- Open index.html met Open with Live Server.
-- Het Energy Dashboard wordt geopend in de browser.
+## Starting the application
+- Download or clone the repository.
+- Open the projectfolder in Visual Studio Code.
+- Install the extsension Live Server (if not installed yet).
+- Open index.html with Open with Live Server.
+- The Energy Dashboard will be opened in the browser.
